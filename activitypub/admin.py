@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import Account, Note
+from .models import Account, Note, Follower
 
 @admin.register(Account)
 class AccountAdmin(admin.ModelAdmin):
-    list_display = ('name', 'icon_image', 'feed')
-    exclude = ('private_key', 'public_key')
+    list_display = ('name', 'icon_image', 'feed', 'private_key', 'public_key')
+    # exclude = ('private_key', 'public_key')
 
     def icon_image(self, row):
         return mark_safe('<img src="/media/{}" style="width:100px;height:auto;">'.format(row.icon)) if row.icon else 'no image'
@@ -35,3 +35,5 @@ class NoteAdmin(admin.ModelAdmin):
 
     def link(self, row):
         return mark_safe('<a href="{}" target="_blank">{}</a>'.format(row.url, row.url)) if row.url else 'no url'
+
+admin.site.register(Follower)
