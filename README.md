@@ -6,6 +6,8 @@ RSSフィードを定期チェックして更新情報をActivityPubでフォロ
 - Ubuntu
 - nginx等Webサーバ
 - SSL/TLS証明書
+- python3.8
+- sqlite3
 
 ## 使い方
 

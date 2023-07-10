@@ -1,10 +1,10 @@
 #!/bin/sh
+sudo apt update
+sudo apt install -y python3.8 python3.8-venv python3.8-dev python3-pip
 
-sudo apt install -y python3 python3-dev virtualenv supervisor
+python3.8 -m venv env
 
-virtualenv env -p python3
-
-env/bin/pip install -r requirements.txt
+env/bin/python -m pip install -r requirements.txt
 env/bin/python manage.py makemigrations activitypub
 env/bin/python manage.py migrate
 env/bin/python manage.py loaddata fixture/setup.json
