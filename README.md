@@ -54,6 +54,7 @@ nginxでHTTPS化して公開する場合(letsencryptで秘密鍵入手済み前�
 
 ```
 $ make nginx_setup
+$ make nginx_enable
 ```
 
 uwsgiなしでHTTPサーバーを立てる場合
@@ -63,6 +64,22 @@ $ make run_standalone
 ```
 
 いずれの場合もリモートフォローにはHTTPSが必須な点に注意してください
+
+## サーバー常駐化
+
+Systemdを使う場合
+
+```
+$ make systemd_setup
+$ make systemd_enable # sudo required
+```
+
+Supervisor
+
+```
+$ make supervisor_setup
+$ make supervisor_enable # sudo required
+```
 
 ## 定期実行設定
 
