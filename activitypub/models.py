@@ -4,6 +4,10 @@ import json
 import magic
 import requests
 import re
+import base64
+import hashlib
+from datetime import datetime
+
 from urllib.parse import urlparse
 from django.db import models
 from django.conf import settings
@@ -136,7 +140,15 @@ class Note(BaseModel):
                 'type': 'Create',
                 'object': self.to_dict(),
             }
-            headers = sign_headers(self.account, 'POST', urlparse(to).path)
+
+            headers = {
+                'Host': urlparse(to).netloc,
+                'Date': datetime.now().strftime('%a, %d %b %Y %H:%M:%S GMT'),
+                'Accept': 'application/activity+json, application/ld+json',
+                'Digest': 'SHA-256='+base64.b64encode(hashlib.sha256(json.dumps(jsn).encode()).digest()).decode(),
+            }
+    
+            headers = sign_headers(self.account, 'POST', urlparse(to).path, headers)
             response = requests.post(to, json=jsn, headers=headers)
             if response.status_code >= 400 and response.status_code < 600:
                 print("note post error")
