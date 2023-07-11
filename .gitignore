@@ -8,3 +8,4 @@ migrations
 fixture/*
 !setup.json
 .env
+simple_ap/settings.py

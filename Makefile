@@ -7,6 +7,7 @@ dependencies:
 
 setup:
 	python3 -m venv env
+	cp simple_ap/settings.py.example simple_ap/settings.py
 	sed -i "s/^DOMAIN = .*$$/DOMAIN = '$(DOMAIN)'/g" simple_ap/settings.py 
 	env/bin/pip install -r requirements.txt
 	env/bin/python manage.py makemigrations activitypub
