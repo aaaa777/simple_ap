@@ -1,0 +1,10 @@
+[Unit]
+Description=simple ActibityPub Server
+
+[Service]
+Type=simple
+TimeoutSec=60
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=simple_ap
+Restart=always

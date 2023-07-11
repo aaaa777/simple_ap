@@ -8,6 +8,7 @@ RSSフィードを定期チェックして更新情報をActivityPubでフォロ
 - SSL/TLS証明書
 - python3.8
 - sqlite3
+- make
 
 ## 使い方
 
@@ -18,6 +19,8 @@ $ vi fixture/setup.json
 ```
 
 初期データの準備。
+
+adminパネルから追加することも可能です。
 
 ```json:fixture/setup.json
 [
@@ -41,43 +44,27 @@ DOMAIN = '<自分のサイトのドメイン eg: www.example.com>'
 セットアップスクリプトの実行。
 
 ```
-$ chmod +x setup.sh
-$ ./setup.sh
+$ make dependencies
+$ make setup
 ```
 
-nginxでHTTPS化して公開する例。
+## サーバー起動
 
-```conf
-server {
-  listen 80;
-  listen [::]:80;
-  server_name example.com;
-  return 301 https://$host$request_uri;
-}
+nginxでHTTPS化して公開する場合(letsencryptで秘密鍵入手済み前提)
 
-server {
-  listen 443;
-  server_name example.com;
-
-  ssl_protocols TLSv1.2;
-  ssl_ciphers HIGH:!MEDIUM:!LOW:!aNULL:!NULL:!SHA;
-  ssl_prefer_server_ciphers on;
-  ssl_session_cache shared:SSL:10m;
-
-  ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
-  ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
-
-    location / {
-        include uwsgi_params;
-        uwsgi_pass unix:///tmp/uwsgi.sock;
-    }
-
-    # メディアファイルの公開用
-    location /media/ {
-        alias /path/to/simple_ap/media/;
-    }
-}
 ```
+$ make nginx_setup
+```
+
+uwsgiなしでHTTPサーバーを立てる場合
+
+```
+$ make run_standalone
+```
+
+いずれの場合もリモートフォローにはHTTPSが必須な点に注意してください
+
+## 定期実行設定
 
 現在のRSS情報を取得。
 
@@ -93,13 +80,15 @@ cronで定期的にRSSの更新を確認。新着があればPOST。
 
 外部インスタンスの検索エリアから `https://~/<name>` でアカウントを検索し、リモートフォロー。
 
+## その他コンソール操作
 
 adminパネルからモデルの操作
 
 ```
-$ env/bin/python manage.py createsuperuser
+$ make superuser
 -> 作成するadminの情報を入力
 
-$ ./start-dev.sh
--> 表示されたURL(127.0.0.1:8000)にポートフォワードなどでアクセスしてログイン
+$ make run_standalone_admin
 ```
+表示されたURL(127.0.0.1:8000)にポートフォワードなどでアクセスしてログイン
+Accountを追加する際、`Public Key`と`Private Key`が空欄に出来ないが、目はSAVE後に更新されるので何を入れても大丈夫

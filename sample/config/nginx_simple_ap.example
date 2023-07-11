@@ -1,0 +1,36 @@
+
+server {
+    listen 80;
+    server_name DOMAIN;
+    return 301 https://$host$request_uri;
+}
+
+### https 設定
+server {
+    listen       443 ssl ;
+    server_name  DOMAIN;
+
+    ssl_protocols TLSv1.2;
+    ssl_ciphers HIGH:!MEDIUM:!LOW:!aNULL:!NULL:!SHA;
+    ssl_prefer_server_ciphers on;
+    ssl_session_cache shared:SSL:10m;
+
+    # letsencryptを利用したSSL化
+    ssl_certificate     /etc/letsencrypt/live/DOMAIN/fullchain.pem
+    ssl_certificate_key /etc/letsencrypt/live/DOMAIN/privkey.pem
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix:///tmp/uwsgi.sock;
+    }
+    
+    # location /media/ {
+    #     # nginxから画像を直接送る場合に設定
+    #     alias /path/to/simple_ap/media/;
+    # }
+
+    # location /static/ {
+    #     # adminページのテーマをStaticに配置する場合に設定
+    #     alias /path/to/simple_ap/static/;
+    # }
+}

@@ -3,10 +3,12 @@
     "model": "activitypub.account",
     "pk": 1,
     "fields": {
-      "name": "simple_ap",
-      "display_name": "テストアカウント",
+      "name": "sample_account",
+      "display_name": "フィーダーサンプルアカウント",
       "feed_url": "https://rss.itmedia.co.jp/rss/2.0/netlab.xml",
       "icon": "images/default-icon.png",
+      "private_key": "-----BEGIN RSA PRIVATE KEY----- MIIEowIBAAKCAQEAn/dH9ZjpreBLjq/9/T6nOQnf63L/qvECUnqjPYYJC8AEAvGW RJu+emwfn/PP5FwJIvw97sva2qlqregEXh5q9Cj/IlRkCPsK66//syThfMxSDYyf xwLHzPVAYjALvMoCcZPD+4mmAR9M9G7tisXmtDLLBZ019xREVt0MQCeKZ0J6KsMX apCF2iQr+G5b14X7cWktbigUgwriZ19TwEqFg5PgwI2P1cKzm1KkJ5X/r+beo13Q k3w0dgYF4ETkDcuIkLMpq9F6T3OSNvT+gbiq8Mm7N3k5eoW1Fl+2IyAJ0ca8niud d+Pdtf2eZg91pVmplpwMogqkG1dxbNzm7kKuvwIDAQABAoIBADqNtGxkxZyczmtz ZkAtj95kC+/OT2GOCLCSLXCWwHbpmU5Oiheg/q8nJshQ4ZcQTVPeCvl+6yRBAUiY 9ghRkArBeuphA6D563xsFufHJzacP6iwAchB70rJtwB538ICG7ThRsqrDvW4NF4A wLicSh9JvGDYs+k2JPG6xgIxtwqmiYtwuLI2KOs3ybeNL5T7MnyuI1yX6NsY2zeZ tWJLwEAH75W9OAa7eFZd8r0gAUFv+JwZCjg2LPUjdp/9j5IdFIw/Ka9Q7E4gxyhw VVstggy3bdJIfoTtSsnzt2r00aY5ovkR4I3hJMUHHuDNPeg+hMd71dcMbCtBQ+9a wNz6QXECgYEAxcNiJQQVSt3CZ0Z6/x0oz02e7lbShamcN5STwGhWg359GXAV0yeH 2AglsTwk8QeeqOpHSMp4kQO/tmqoW4vcGdTppq4e22n4UZ3j6Q40ehJ5W3dldbJz SN1kP5u9OWSRHKK1Roy2ZC3CCF73ut/OElZE+5APkPJ5apQ9RFO+UccCgYEAzxKB RQJynfig7xmrJXgIKyCXseCWEs2XBhTqv1Itq9E+m+JyMLk/kuSFlfLD2pNPXrYz IzFCrG2xKs72YbsIJshMHGZ0NPAev4tha+Vk3hC+HVVmpGcUhy/fwXUU7TqJsX9X zTGy0dDtt3kjawSWmocIWY19le6uazzSeN63u0kCgYA4RyO02PaeOYFLFnmGA+xL IhGqTbbXJq83+eYaCRclkGdVR9pOHp+/0IG5cB4rITn7Y8ApbMTmr6Rs6ulCNAjM qRRcxIwvcHaj80SaW9p/KqayasXKup+oCqiumUk9/ep1ta/UhdKZq5PeAfiJi4r/ GOHEnPhxDS+ULt9IhHRSnQKBgHmKkAu0cxgb7kJJW7ZjbM/7km5at1uUBrgQIPVp Q9tctxYCZSoKIbGTpoEr/B9YZbbe1McsS8kvnVTWI7GbeR5iZKIq1LyZ0EJ3ihgt jfX199D55oRK6Last/YyRbU0rctcRmnvaNlUe6M8XDidedR7u7/sl7EgZooVKii9 +TPZAoGBAI+Pq/qn2qOEsZarFnt6Fftf/D8ywMZ2eAd/7olJeGbt6pGcBbzxx8qU pVIfpfi33CxkVfvDWPtjJ6WI01UfTjS83Fu9k3v+nYlhIHYxqYMFiiJ5zYkM3Rrn 9N5wsAoypybsOEMi+oXZsrbR/2MiGkaikMcMPyYVO/slJBLPKrIs -----END RSA PRIVATE KEY-----",
+      "public_key": "-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAn/dH9ZjpreBLjq/9/T6n OQnf63L/qvECUnqjPYYJC8AEAvGWRJu+emwfn/PP5FwJIvw97sva2qlqregEXh5q 9Cj/IlRkCPsK66//syThfMxSDYyfxwLHzPVAYjALvMoCcZPD+4mmAR9M9G7tisXm tDLLBZ019xREVt0MQCeKZ0J6KsMXapCF2iQr+G5b14X7cWktbigUgwriZ19TwEqF g5PgwI2P1cKzm1KkJ5X/r+beo13Qk3w0dgYF4ETkDcuIkLMpq9F6T3OSNvT+gbiq 8Mm7N3k5eoW1Fl+2IyAJ0ca8niudd+Pdtf2eZg91pVmplpwMogqkG1dxbNzm7kKu vwIDAQAB -----END PUBLIC KEY-----",
       "created_at": "2018-06-18 12:00:00",
       "updated_at": "2018-06-18 12:00:00"
     }
