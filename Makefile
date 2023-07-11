@@ -18,7 +18,9 @@ supervisor_setup:
 	echo directory=$(PWD) >> simple_ap.conf
 	echo command=$(PWD)/env/bin/uwsgi --ini flask.ini >> simple_ap.conf
 	echo user=$(USER) >> simple_ap.conf
-	sudo mv simple_ap.conf /etc/supervisor/conf.d/
+
+supervisor_enable:
+	sudo cp simple_ap.conf /etc/supervisor/conf.d/
 	sudo supervisorctl reload
 
 systemd_setup:
@@ -26,7 +28,9 @@ systemd_setup:
 	echo WorkingDirectory=$(PWD) >> simple_ap.service
 	echo ExecStart=$(PWD)/env/bin/uwsgi --ini flask.ini >> simple_ap.service
 	echo User=$(USER) >> simple_ap.service
-	sudo mv simple_ap.service /etc/systemd/system/
+
+systemd_enable:
+	sudo cp simple_ap.service /etc/systemd/system/
 	sudo systemctl daemon-reload
 	sudo systemctl enable simple_ap.service
 	sudo systemctl start simple_ap.service
@@ -34,7 +38,9 @@ systemd_setup:
 nginx_setup:
 	cp sample/config/nginx_simple_ap.conf.example nginx_simple_ap.conf
 	sed -i "s/DOMAIN/$(DOMAIN)/g" nginx_simple_ap.conf
-	sudo mv nginx_simple_ap.conf /etc/nginx/sites-available/$(DOMAIN)/
+
+nginx_enable:
+	sudo cp nginx_simple_ap.conf /etc/nginx/sites-available/$(DOMAIN)/
 	sudo ln -s /etc/nginx/sites-available/$(DOMAIN) /etc/nginx/sites-enabled/
 	sudo systemctl restart nginx
 
