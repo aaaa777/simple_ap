@@ -34,6 +34,10 @@ $ vi fixture/setup.json
 ]
 ```
 
+```python:simple_ap/settings.py
+DOMAIN = '<自分のサイトのドメイン eg: www.example.com>'
+```
+
 セットアップスクリプトの実行。
 
 ```
@@ -88,3 +92,14 @@ cronで定期的にRSSの更新を確認。新着があればPOST。
 ```
 
 外部インスタンスの検索エリアから `https://~/<name>` でアカウントを検索し、リモートフォロー。
+
+
+adminパネルからモデルの操作
+
+```
+$ env/bin/python manage.py createsuperuser
+-> 作成するadminの情報を入力
+
+$ ./start-dev.sh
+-> 表示されたURL(127.0.0.1:8000)にポートフォワードなどでアクセスしてログイン
+```

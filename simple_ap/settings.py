@@ -25,12 +25,13 @@ SECRET_KEY = '612f!1j%(4z$#^bnjvqw0(%8#0s6#m-w#9v5rz)r@%hk2hcn6i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+DOMAIN = 'aaaa777-congenial-enigma-r7x54gp4p6j3wxgv-5000.preview.app.github.dev'
 ALLOWED_HOSTS = [
-    'aaaa777-congenial-enigma-r7x54gp4p6j3wxgv-5000.preview.app.github.dev'
+    DOMAIN,
     'feed.gentle.nomiss.net',
     '127.0.0.1',
     'localhost'
-    ]
+]
 
 
 # Application definition
@@ -129,5 +130,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-DOMAIN = 'aaaa777-congenial-enigma-r7x54gp4p6j3wxgv-5000.preview.app.github.dev'
 SERVER_URL = 'https://'+DOMAIN
