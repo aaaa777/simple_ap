@@ -13,6 +13,7 @@ from django.db import models
 from django.conf import settings
 from Crypto.PublicKey import RSA
 from Crypto import Random
+
 from .lib import sign_headers
 
 class BaseModel(models.Model):
@@ -42,9 +43,11 @@ class Account(BaseModel):
     def delete_file(path):
         if os.path.isfile(path):
             os.remove(path)
+
     def create_key_pair():
         rsa = RSA.generate(2048, Random.new().read)
         return [rsa.exportKey().decode('utf-8'), rsa.publickey().exportKey().decode('utf-8')]
+    
     def save(self, *args, **kwargs):
         previous = Account.objects.filter(pk=self.pk).first()
         if previous and previous.icon != self.icon:
